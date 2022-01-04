@@ -1,0 +1,9 @@
+[[snippets]]
+  description = "flac to opus"
+  command = "ffmpeg -i input.flac -acodec libopus -b:a 256k -vbr on -ac 2 -compression_level 10 -frame_duration 60 output.opus"
+  output = ""
+
+[[snippets]]
+  description = "Proper way to sideload fonts"
+  command = "install -Dm644 fontname.ttf /usr/share/fonts/"
+  output = ""
