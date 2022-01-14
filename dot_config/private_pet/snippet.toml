@@ -7,3 +7,28 @@
   description = "Proper way to sideload fonts"
   command = "install -Dm644 fontname.ttf /usr/share/fonts/"
   output = ""
+
+[[snippets]]
+  description = "Export table of contents from DJVU file"
+  command = "djvused input.djvu -e print-outline > bookmarks.txt"
+  output = ""
+
+[[snippets]]
+  description = "Set table of contents in a DJVU file"
+  command = "djvused input.djvu -e \"set-outline bookmarks.txt\" -s"
+  output = ""
+
+[[snippets]]
+  description = "Set bookmarks for a PDF file"
+  command = "pdftk input.pdf update_info outline.info output output.pdf"
+  output = ""
+
+[[snippets]]
+  description = "Export bookmarks from a PDF file to plain text"
+  command = "pdftk input.pdf dump_data > outline.info"
+  output = ""
+
+[[snippets]]
+  description = "Convert pdf to djvu, change dpi to desired, and jobs to # of CPU cores."
+  command = "pdf2djvu -o output.djvu --words --dpi=600 --jobs=2 input.pdf"
+  output = ""
