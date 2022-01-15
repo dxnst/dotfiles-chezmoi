@@ -23,7 +23,7 @@ set $menu wofi
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/d/voidlinux.png fill
+output * bg /home/d/sonic.png fill
 #
 # Example configuration:
 #
