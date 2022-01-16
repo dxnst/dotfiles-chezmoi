@@ -4,19 +4,14 @@ map . set hidden!
 map D delete
 
 cmd open ${{
-    case "$f" in
-        *.pdf) setsid -f zathura $fx >/dev/null 2>&1 ;;
-        *)
-            case $(file --mime-type $f -b) in
-		inode/symlink) $OPENER $(realpath $f) >/dev/null 2>&1 ;;
-		text/*|application/json|application/csv|*opendocument.text) nvim $fx;;
-		application/pdf|application/epub*|image/vnd.djvu) setsid -f zathura $fx >/dev/null 2>&1 ;;
-		image/x-xcf|image/svg+xml) display -- $f ;;
-		image/*) imv $f 2>/dev/null | lf-select ;;
-		*.jpg) imv $f 2>/dev/null | lf-select ;;
-        audio/*) mpv $f ;;
-		video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
-		*) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
-	    esac
+    case $(file --mime-type "$(readlink -f $f)" -b) in
+	image/vnd.djvu|application/pdf) zathura $f >/dev/null | lf-select & ;;
+	text/*) $EDITOR $fx;;
+	image/*) imv $f >/dev/null | lf-select & ;;
+	audio/*) mpv --audio-display=no $f ;;
+	video/*) mpv $f >/dev/null | lf-select & ;;
+	application/pdf|application/vnd*|application/epub*) zathura $fx >/dev/null | lf-select & ;;
+	application/pgp-encrypted) $EDITOR $fx ;;
+        *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
     esac
 }}
