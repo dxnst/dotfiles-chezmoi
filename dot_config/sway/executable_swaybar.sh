@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/ash
 
 # This function makes your bar laggy
 #weather() {

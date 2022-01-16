@@ -1,3 +1,4 @@
+exec_always pipewire
 exec_always udiskie
 # Default config for sway
 #
@@ -18,12 +19,12 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi
+set $menu dmenu_run -fn 'agave Nerd Font Mono-12' -nb '#2E3440' -nf '#ECEFF4' -sb '#88C0D0' -sf '#2E3440'
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/d/sonic.png fill
+output * bg /home/d/bg/nord-nebula.png fill
 #
 # Example configuration:
 #

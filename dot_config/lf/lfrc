@@ -1,4 +1,7 @@
-set shell bash
+set shell ash
+
+map . set hidden!
+map D delete
 
 cmd open ${{
     case "$f" in
