@@ -1,11 +1,7 @@
+# Set services to run with session
 exec_always pipewire
 exec_always udiskie
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-### Variables
+
 font pango: agave Nerd Font Mono 10
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
@@ -14,40 +10,18 @@ set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
+
+# Set default utilities
 set $term foot 
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
+
 set $menu dmenu_run -fn 'agave Nerd Font Mono-12' -nb '#2E3440' -nf '#ECEFF4' -sb '#88C0D0' -sf '#2E3440'
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/d/bg/nord-nebula.png fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+set $suspend doas pm-suspend
 
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+# Output configuration
+output * bg /home/d/bg/nord-nebula.png fill
 
 ### Input configuration
-#
-# Example configuration:
 # Keychron K6 wired mode
     input "1452:591:Keychron_Keychron_K6" {
         xkb_model "pc86"
@@ -92,7 +66,8 @@ output * bg /home/d/bg/nord-nebula.png fill
 
     # Start your launcher
     bindsym $mod+d exec $menu
-
+	
+	bindsym $mod+Escape exec $suspend
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
