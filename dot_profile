@@ -1,8 +1,10 @@
 # .profile
 
-alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
 export EDITOR=nvim
 export PATH=$HOME/go/bin:$PATH
 export XDG_RUNTIME_DIR=/home/d/.swaytmp
+
+alias ls='ls --color=auto'
+alias startx='dbus-launch --exit-with-session sway'

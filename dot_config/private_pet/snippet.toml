@@ -32,3 +32,8 @@
   description = "Convert pdf to djvu, change dpi to desired, and jobs to # of CPU cores."
   command = "pdf2djvu -o output.djvu --words --dpi=600 --jobs=2 input.pdf"
   output = ""
+
+[[snippets]]
+  description = "Download submitted content from a given reddit username"
+  command = "python3 -m bdfr download /full/path/output --user redditusername --submitted --no-dupes"
+  output = ""
